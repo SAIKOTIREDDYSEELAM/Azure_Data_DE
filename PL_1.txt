@@ -1,5 +1,5 @@
 {
-    "name": "PL_1",
+    "name": "PL_1_BlobInputToOutput_CopyDataActivity",
     "properties": {
         "activities": [
             {
