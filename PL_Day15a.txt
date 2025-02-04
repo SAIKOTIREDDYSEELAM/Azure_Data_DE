@@ -1,0 +1,132 @@
+{
+    "name": "PL_5_api",
+    "properties": {
+        "activities": [
+            {
+                "name": "Copy data1",
+                "type": "Copy",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "JsonSource",
+                        "storeSettings": {
+                            "type": "HttpReadSettings",
+                            "requestMethod": "GET"
+                        },
+                        "formatSettings": {
+                            "type": "JsonReadSettings"
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobFSWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        }
+                    },
+                    "enableStaging": false,
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "mappings": [
+                            {
+                                "source": {
+                                    "path": "$['id']"
+                                },
+                                "sink": {
+                                    "path": "id"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['name']"
+                                },
+                                "sink": {
+                                    "path": "name"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['company']"
+                                },
+                                "sink": {
+                                    "path": "comapany"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['username']"
+                                },
+                                "sink": {
+                                    "path": "username"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['email']"
+                                },
+                                "sink": {
+                                    "path": "email"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['zip']"
+                                },
+                                "sink": {
+                                    "path": "zip"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['state']"
+                                },
+                                "sink": {
+                                    "path": "state"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['country']"
+                                },
+                                "sink": {
+                                    "path": "country"
+                                }
+                            },
+                            {
+                                "source": {
+                                    "path": "$['phone']"
+                                },
+                                "sink": {
+                                    "path": "phone"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inputs": [
+                    {
+                        "referenceName": "Json2",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "Json3",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "annotations": []
+    }
+}
